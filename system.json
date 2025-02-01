@@ -16,7 +16,7 @@
   "version": "1.2.1",
   "compatibility": {
     "minimum": "0.8.0",
-    "verified": "11"
+    "verified": "12"
   },
   "esmodules": [
     "module/electricbastionland.js"

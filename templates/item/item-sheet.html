@@ -20,7 +20,7 @@
                         class="checkbox-block"
                         type="checkbox"
                         {{checked systemData.bulky}}
-                        name="data.bulky"
+                        name="system.bulky"
                         value="{{systemData.bulky}}"
                         data-dtype="Boolean"/>
                 </div>
@@ -30,7 +30,7 @@
                         class="checkbox-block"
                         type="checkbox"
                         {{checked systemData.equipped}}
-                        name="data.equipped"
+                        name="system.equipped"
                         value="{{systemData.equipped}}"
                         data-dtype="Boolean"/>
                 </div>
@@ -42,7 +42,7 @@
                         class="checkbox-block"
                         type="checkbox"
                         {{checked systemData.blast}}
-                        name="data.blast"
+                        name="system.blast"
                         value="{{systemData.blast}}"
                         data-dtype="Boolean"/>
                 </div>
@@ -56,7 +56,7 @@
             <label class="resource-label">Quantity</label>
             <input
                 type="number"
-                name="data.quantity"
+                name="system.quantity"
                 value="{{systemData.quantity}}"
                 data-dtype="Number"/>
         </div>
@@ -64,7 +64,7 @@
             <label class="resource-label"># of Uses</label>
             <input
                 type="number"
-                name="data.numberOfUses"
+                name="system.numberOfUses"
                 value="{{systemData.numberOfUses}}"
                 data-dtype="Number"/>
         </div>
@@ -72,7 +72,7 @@
             <label class="resource-label">Armour</label>
             <input
                 type="number"
-                name="data.armour"
+                name="system.armour"
                 value="{{systemData.armour}}"
                 data-dtype="Number"/>
         </div>
@@ -80,7 +80,7 @@
             <label class="resource-label">Damage</label>
             <input
                 type="text"
-                name="data.damageFormula"
+                name="system.damageFormula"
                 value="{{systemData.damageFormula}}"/>
         </div>
     </div>
@@ -94,5 +94,5 @@
         </nav>
     </div>
 
-    {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
+    {{editor systemData.description target="system.description"}}
 </form>

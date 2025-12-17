@@ -1,9 +1,10 @@
 {
   "name": "electricbastionland",
-  "version": "1.3.0.rc2",
+  "version": "1.4.0-rc2",
   "scripts": {
     "build": "rimraf ./electricbastionland.zip && zip -r electricbastionland.zip css lib module templates 'electric bastionland sheets.png' package.json system.json template.json",
-    "local": "npm run build && cp electricbastionland.zip ~/.local/share/FoundryVTT/Data/systems/ && cd ~/.local/share/FoundryVTT/Data/systems && unzip -o electricbastionland.zip -d electricbastionland && rm electricbastionland.zip"
+    "local": "npm run build && cp electricbastionland.zip ~/.local/share/FoundryVTT/Data/systems/ && cd ~/.local/share/FoundryVTT/Data/systems && unzip -o electricbastionland.zip -d electricbastionland && rm electricbastionland.zip",
+    "update-version": "node scripts/update-version.js"
   },
   "browserslist": [
     "last 3 versions"

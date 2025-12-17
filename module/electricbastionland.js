@@ -4,48 +4,50 @@ import { ElectricBastionlandActorSheet } from "./actor/actor-sheet.js";
 import { ElectricBastionlandItem } from "./item/item.js";
 import { ElectricBastionlandItemSheet } from "./item/item-sheet.js";
 
-Hooks.once('init', async function () {
-    // Register sheet application classes
-    Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("electricbastionland", ElectricBastionlandActorSheet, {makeDefault: true});
-    Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("electricbastionland", ElectricBastionlandItemSheet, {makeDefault: true});
+Hooks.once("init", async function () {
+  // Register sheet application classes
+  Actors.unregisterSheet("core", ActorSheet);
+  Actors.registerSheet("electricbastionland", ElectricBastionlandActorSheet, {
+    makeDefault: true,
+  });
+  Items.unregisterSheet("core", ItemSheet);
+  Items.registerSheet("electricbastionland", ElectricBastionlandItemSheet, {
+    makeDefault: true,
+  });
 
-    game.electricbastionland = {
-        apps: {
-            ElectricBastionlandActorSheet,
-            ElectricBastionlandItemSheet
-        },
-        entitie: {
-            ElectricBastionlandActor,
-            ElectricBastionlandItem,
-        }
-    };
+  game.electricbastionland = {
+    apps: {
+      ElectricBastionlandActorSheet,
+      ElectricBastionlandItemSheet,
+    },
+    entitie: {
+      ElectricBastionlandActor,
+      ElectricBastionlandItem,
+    },
+  };
 
-    // Define custom Entity classes
-    CONFIG.Actor.documentClass = ElectricBastionlandActor;
-    CONFIG.Item.documentClass = ElectricBastionlandItem;
+  // Define custom Entity classes
+  CONFIG.Actor.documentClass = ElectricBastionlandActor;
+  CONFIG.Item.documentClass = ElectricBastionlandItem;
 
+  // If you need to add Handlebars helpers, here are a few useful examples:
+  Handlebars.registerHelper("concat", function () {
+    let outStr = "";
 
-    // If you need to add Handlebars helpers, here are a few useful examples:
-    Handlebars.registerHelper('concat', function () {
-        let outStr = '';
+    for (var arg in arguments) {
+      if (typeof arguments[arg] != "object") {
+        outStr += arguments[arg];
+      }
+    }
 
-        for (var arg in arguments) {
-            if (typeof arguments[arg] != 'object') {
-                outStr += arguments[arg];
-            }
-        }
+    return outStr;
+  });
 
-        return outStr;
-    });
+  Handlebars.registerHelper("toLowerCase", function (str) {
+    return str.toLowerCase();
+  });
 
-    Handlebars.registerHelper('toLowerCase', function (str) {
-        return str.toLowerCase();
-    });
-
-    Handlebars.registerHelper('boldIf', function (cond, options) {
-        return (cond) ? '<b>' + options.fn(this) + '</b>' : options.fn(this);
-    });
-
+  Handlebars.registerHelper("boldIf", function (cond, options) {
+    return cond ? "<b>" + options.fn(this) + "</b>" : options.fn(this);
+  });
 });

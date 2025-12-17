@@ -1,0 +1,69 @@
+name: Version Sync
+
+on:
+  push:
+    branches:
+      - '**'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-version:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check if version.txt changed
+        id: check
+        run: |
+          if git diff HEAD^ HEAD --name-only | grep -q "^version.txt$"; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "version.txt has changed"
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "version.txt has not changed, skipping"
+          fi
+
+      - name: Read version
+        if: steps.check.outputs.changed == 'true'
+        id: version
+        run: |
+          VERSION=$(cat version.txt | tr -d '\n')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version: $VERSION"
+
+      - name: Set up Node.js
+        if: steps.check.outputs.changed == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Update version in files
+        if: steps.check.outputs.changed == 'true'
+        run: npm run update-version
+
+      - name: Commit version changes
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add system.json package.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update version to ${{ steps.version.outputs.version }} [skip ci]"
+            git push
+          fi
+
+      - name: Create and push tag
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git tag -a "v${{ steps.version.outputs.version }}" -m "Release v${{ steps.version.outputs.version }}"
+          git push origin "v${{ steps.version.outputs.version }}"
+
+

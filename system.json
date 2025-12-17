@@ -17,7 +17,7 @@
   ],
   "url": "https://github.com/jreiter/electric-bastionland-FoundryVTT/",
   "license": "LICENSE.txt",
-  "version": "1.3.0",
+  "version": "1.4.0-rc1",
   "compatibility": {
     "minimum": "12",
     "verified": "13"
@@ -30,7 +30,7 @@
   ],
   "relationships": [],
   "manifest": "https://raw.githubusercontent.com/jreiter/electric-bastionland-FoundryVTT/v12/system.json",
-  "download": "https://github.com/jreiter/electric-bastionland-FoundryVTT/releases/download/v1.3.0/electricbastionland.zip",
+  "download": "https://github.com/jreiter/electric-bastionland-FoundryVTT/releases/download/v1.4.0-rc1/electricbastionland.zip",
   "grid": {
     "gridDistance": 1,
     "gridUnits": "m"

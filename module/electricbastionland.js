@@ -4,6 +4,9 @@ import { ElectricBastionlandActorSheet } from "./actor/actor-sheet.js";
 import { ElectricBastionlandItem } from "./item/item.js";
 import { ElectricBastionlandItemSheet } from "./item/item-sheet.js";
 
+const { ActorSheet, ItemSheet } = foundry.appv1.sheets;
+const { Actors, Items } = foundry.documents.collections;
+
 Hooks.once("init", async function () {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);

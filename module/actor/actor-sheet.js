@@ -1,3 +1,5 @@
+const { ActorSheet } = foundry.appv1.sheets;
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}

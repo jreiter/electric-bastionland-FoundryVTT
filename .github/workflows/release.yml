@@ -40,7 +40,7 @@ jobs:
             ## Installation
             Install this system in FoundryVTT using the manifest URL:
             ```
-            https://raw.githubusercontent.com/${{ github.repository }}/v12/system.json
+            https://raw.githubusercontent.com/${{ github.repository }}/v${{ steps.version.outputs.VERSION }}/system.json
             ```
             
             Or download the zip file below and extract it to your FoundryVTT Data/systems directory.
@@ -48,4 +48,5 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 

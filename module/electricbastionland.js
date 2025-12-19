@@ -1,8 +1,10 @@
 // Import Modules
 import { ElectricBastionlandActor } from "./actor/actor.js";
 import { ElectricBastionlandActorSheet } from "./actor/actor-sheet.js";
+import { ElectricBastionlandActorSheetV2 } from "./actor/actor-sheet-v2.js";
 import { ElectricBastionlandItem } from "./item/item.js";
 import { ElectricBastionlandItemSheet } from "./item/item-sheet.js";
+import { ElectricBastionlandItemSheetV2 } from "./item/item-sheet-v2.js";
 
 const { ActorSheet, ItemSheet } = foundry.appv1.sheets;
 const { Actors, Items } = foundry.documents.collections;
@@ -10,13 +12,30 @@ const { Actors, Items } = foundry.documents.collections;
 Hooks.once("init", async function () {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("electricbastionland", ElectricBastionlandActorSheet, {
-    makeDefault: true,
-  });
+
+  // Register ApplicationV2 sheet
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(
+    ElectricBastionlandActor,
+    "electricbastionland",
+    ElectricBastionlandActorSheetV2,
+    {
+      makeDefault: true,
+      label: "Electric Bastionland Character Sheet",
+    },
+  );
+
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("electricbastionland", ElectricBastionlandItemSheet, {
-    makeDefault: true,
-  });
+
+  // Register ApplicationV2 item sheet
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(
+    ElectricBastionlandItem,
+    "electricbastionland",
+    ElectricBastionlandItemSheetV2,
+    {
+      makeDefault: true,
+      label: "Electric Bastionland Item Sheet",
+    },
+  );
 
   game.electricbastionland = {
     apps: {

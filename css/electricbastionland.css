@@ -5,7 +5,7 @@
 }
 
 .rollable:hover, .rollable:focus {
-    color: #000;
+    /* color: #000; */
     text-shadow: 0 0 10px red;
     cursor: pointer;
 }
@@ -84,7 +84,7 @@
 }
 
 .flex-group-center {
-    background-color: white;
+    /* background-color: white; */
 }
 
 .flex-group-left {
@@ -161,22 +161,19 @@
     padding: 0px;
     margin: 5px 0;
     border-bottom: 0;
-    background-color: black;
-    color: white;
+    /* background-color: black; */
+    /* color: white; */
 
 }
 
 h1.charname input {
     border: 0px;
     background-color: black;
-    color: white;
     font-variant: small-caps;
 }
 
 h2.failed-career input {
     border: 0px;
-    background-color: white;
-    color: black;
     border-bottom: 1px solid black;
     padding: 2px;
     font-variant: small-caps;
@@ -205,7 +202,6 @@ h2.failed-career input {
     border: 10px solid black;
     border-bottom: 0px;
     border-right: 0px;
-    background-color: #F5F5F5;
     background-image: none;
 }
 
@@ -217,10 +213,6 @@ h2.failed-career input {
 
 .electricbastionland .sheet-body {
     flex-grow: 3;
-}
-
-.electricbastionland .tox .tox-editor-container {
-    background: #fff;
 }
 
 .electricbastionland .tox .tox-edit-area {
@@ -239,8 +231,8 @@ h2.failed-career input {
     font-weight: bold;
     text-transform: uppercase;
     display: block;
-    color: white;
-    background-color: black;
+    /* color: white; */
+    /* background-color: black; */
     margin-bottom: 4px;
 }
 
@@ -317,8 +309,8 @@ h2.failed-career input {
 }
 
 .electricbastionland .items-list .clickable {
-    background-color: #669;
-    color: white;
+    /* background-color: #669; */
+    /* color: white; */
 }
 
 .app {
@@ -328,4 +320,22 @@ h2.failed-career input {
 
 body, .window-app {
 
+}
+
+/* ApplicationV2 specific fixes */
+.electricbastionland form {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.electricbastionland .tab {
+    display: none;
+}
+
+.electricbastionland .tab.active {
+    display: block;
+}
+
+.electricbastionland .items-list {
+    overflow-y: visible;
 }

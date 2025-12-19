@@ -1,0 +1,98 @@
+<form
+    class="{{cssClass}}"
+    autocomplete="off">
+    <header class="sheet-header">
+        <img
+            class="profile-img"
+            src="{{item.img}}"
+            data-edit="img"
+            title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input
+                name="name"
+                type="text"
+                value="{{item.name}}"
+                placeholder="Name"/></h1>
+            <div class="grid grid-2col">
+                <div class="resource flex-group-center">
+                    <label class="resource-label">Bulky</label>
+                    <input
+                        class="checkbox-block"
+                        type="checkbox"
+                        {{checked systemData.bulky}}
+                        name="system.bulky"
+                        value="{{systemData.bulky}}"
+                        data-dtype="Boolean"/>
+                </div>
+                <div class="resource flex-group-center">
+                    <label class="resource-label">Equipped</label>
+                    <input
+                        class="checkbox-block"
+                        type="checkbox"
+                        {{checked systemData.equipped}}
+                        name="system.equipped"
+                        value="{{systemData.equipped}}"
+                        data-dtype="Boolean"/>
+                </div>
+            </div>
+            <div class="grid grid-2col">
+                <div class="resource flex-group-center">
+                    <label class="resource-label">Blast</label>
+                    <input
+                        class="checkbox-block"
+                        type="checkbox"
+                        {{checked systemData.blast}}
+                        name="system.blast"
+                        value="{{systemData.blast}}"
+                        data-dtype="Boolean"/>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="grid grid-4col">
+        <div class="resource flex-group-center">
+            <label class="resource-label">Quantity</label>
+            <input
+                type="number"
+                name="system.quantity"
+                value="{{systemData.quantity}}"
+                data-dtype="Number"/>
+        </div>
+        <div class="resource flex-group-center">
+            <label class="resource-label"># of Uses</label>
+            <input
+                type="number"
+                name="system.numberOfUses"
+                value="{{systemData.numberOfUses}}"
+                data-dtype="Number"/>
+        </div>
+        <div class="resource flex-group-center">
+            <label class="resource-label">Armour</label>
+            <input
+                type="number"
+                name="system.armour"
+                value="{{systemData.armour}}"
+                data-dtype="Number"/>
+        </div>
+        <div class="resource flex-group-center">
+            <label class="resource-label">Damage</label>
+            <input
+                type="text"
+                name="system.damageFormula"
+                value="{{systemData.damageFormula}}"/>
+        </div>
+    </div>
+    <div class="sheet-tabs-container">
+        <nav
+            class="sheet-tabs tabs"
+            data-group="primary">
+            <span
+                class="item"
+                data-tab="description">Description</span>
+        </nav>
+    </div>
+
+    {{editor enrichedDescription target="system.description" editable=editable engine="prosemirror"}}
+</form>
